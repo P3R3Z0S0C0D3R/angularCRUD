@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<title>Movies List</title>
+		<link href="bootstrap.min.css" rel="stylesheet" />
+		<script src="jquery-3.2.1.min.js"></script>
+		<script src="bootstrap.min.js"></script>
+		<script src="angular.js"></script>
+		<script src="app.js"></script>
+		<script src="tableFilter.js"></script>
+	</head>
+
+	<body ng-app="myMovieApp">
+
+		<!-- <form class="form-horizontal"> -->
+			<div ng-controller="myMovieController" class="container">
+				<form class="form-inline" style="padding:5px;">
+					<div class="form-group">
+						<label>Movie Rank:</label>
+						<input type="text" class="form-control" ng-model="Movie.rank" placeholder="Enter Movie Rank" />
+					</div>
+					<div class="form-group">
+						<label>Movie Title:</label>
+						<textarea  type="text" class="form-control" rows="1" ng-model="Movie.title" placeholder="Enter Movie Title" /></textarea>
+					</div>
+					<div class="form-group">
+						<label>IMDB Id:</label>
+						<input type="text" class="form-control" ng-model="Movie.id" placeholder="Enter Movie IMDB Id" />
+					</div>
+				</form>
+				<div class="row" style="padding:5px;">
+					<div class="col-xs-2 col-md-1"><input type="button" class="btn btn-primary" ng-click="AddMovie(Movie)" value="Save" /></div>
+					<div class="col-xs-2 col-md-1"><input type="button" class="btn btn-primary" ng-click="UpdateMovie(Movie)" value="Update" /></div>
+					<div class="col-xs-2 col-md-1"><input type="button" class="btn btn-primary" ng-click="Cancel()" value="Cencel" /></div>
+				</div>
+				<div class="row" style="padding:5px;">
+					<div class="panel panel-primary filterable">
+						<div class="panel-heading">
+							<h3 class="panel-title">Movies List</h3>
+						</div>
+						<table class="table">
+							<thead>
+								<tr class="filters">
+									<th><input type="text" class="form-control" placeholder="Rank" disabled></th>
+									<th><input type="text" class="form-control" placeholder="Title" disabled></th>
+									<th><input type="text" class="form-control" placeholder="IMDB Id" disabled></th>
+									<th><button class="btn btn-primary btn-filter"> Search</button></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="movie in MovieList">
+									<td>{{movie.rank}}</td>
+									<td>{{movie.title}}</td>
+									<td>{{movie.id}}</td>
+									<td style="padding:1px;">
+										<input type="button" class="btn btn-primary" value="Edit" ng-click="EditMovie(movie)" /></td>
+									<td style="padding:1px;">
+										<input type="button" class="btn btn-primary" value="Delete" ng-click="DeleteMovie(movie)" /></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		<!-- </form> -->
+		
+	</body>
+
+</html>
